@@ -15,7 +15,10 @@ document.getElementById('connect-wallet').addEventListener('click', async () => 
 
       // Fetch and display SOL balance from Mainnet
       const connection = new solanaWeb3.Connection(solanaWeb3.clusterApiUrl('mainnet-beta'));
+      console.log('Connection established to Mainnet.');
+
       const balance = await connection.getBalance(response.publicKey);
+      console.log('Balance fetched:', balance);
 
       // Display the balance
       document.getElementById('wallet-balance').textContent = (balance / solanaWeb3.LAMPORTS_PER_SOL).toFixed(2);
