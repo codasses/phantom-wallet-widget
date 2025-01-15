@@ -1,6 +1,6 @@
 document.getElementById('connect-wallet').addEventListener('click', async () => {
     console.log('Starting wallet connection process...');
-    
+  
     const provider = window.solana || undefined;
   
     if (provider && provider.isPhantom) {
@@ -13,16 +13,18 @@ document.getElementById('connect-wallet').addEventListener('click', async () => 
         // Display wallet address
         document.getElementById('wallet-address').textContent = response.publicKey.toString();
   
-        // Fetch and display SOL balance from Devnet
-        const connection = new solanaWeb3.Connection(solanaWeb3.clusterApiUrl('devnet')); // Change 'devnet' to 'mainnet-beta' for mainnet
+        // Fetch and display SOL balance from Mainnet
+        const connection = new solanaWeb3.Connection(solanaWeb3.clusterApiUrl('mainnet-beta'));
         const balance = await connection.getBalance(response.publicKey);
+  
+        // Display the balance
         document.getElementById('wallet-balance').textContent = (balance / solanaWeb3.LAMPORTS_PER_SOL).toFixed(2);
   
-        // Show wallet info
+        // Show wallet info section
         document.getElementById('wallet-info').style.display = 'block';
       } catch (error) {
-        console.error('Error connecting to Phantom Wallet:', error);
-        alert('Failed to connect. Please try again.');
+        console.error('Error fetching balance or connecting:', error);
+        alert('Failed to fetch balance. Please try again.');
       }
     } else {
       console.error('Phantom Wallet not detected.');
