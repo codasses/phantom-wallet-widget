@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phantom Wallet Widget</title>
+  <style>
+    #phantom-widget {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px auto;
+      padding: 20px;
+      border: 2px solid #673ab7;
+      border-radius: 10px;
+      width: 300px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: #f9f9f9;
+    }
+    #connect-wallet {
+      background-color: #673ab7;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    #connect-wallet:hover {
+      background-color: #5e35b1;
+    }
+    #wallet-info {
+      margin-top: 15px;
+    }
+    p {
+      font-size: 14px;
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="phantom-widget">
+    <button id="connect-wallet">Connect Phantom Wallet</button>
+    <div id="wallet-info" style="display: none;">
+      <p><strong>Wallet Address:</strong> <span id="wallet-address"></span></p>
+      <p><strong>Balance:</strong> <span id="wallet-balance"></span> SOL</p>
+    </div>
+  </div>
+
+  <!-- Include Solana Web3.js -->
+  <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.js"></script>
+  <!-- Custom Script -->
+  <script src="script.js"></script>
+</body>
+</html>
